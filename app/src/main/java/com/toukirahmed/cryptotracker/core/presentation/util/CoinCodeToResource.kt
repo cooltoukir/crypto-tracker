@@ -1,4 +1,4 @@
-package com.toukirahmed.cryptotracker.util
+package com.toukirahmed.cryptotracker.core.presentation.util
 
 import com.toukirahmed.cryptotracker.R
 

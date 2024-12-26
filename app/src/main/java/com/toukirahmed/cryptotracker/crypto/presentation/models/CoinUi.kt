@@ -1,8 +1,8 @@
 package com.toukirahmed.cryptotracker.crypto.presentation.models
 
 import androidx.annotation.DrawableRes
+import com.toukirahmed.cryptotracker.core.presentation.util.getDrawableIdForCoin
 import com.toukirahmed.cryptotracker.crypto.domain.Coin
-import com.toukirahmed.cryptotracker.util.getDrawableIdForCoin
 import java.text.NumberFormat
 import java.util.Locale
 
