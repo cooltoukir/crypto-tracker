@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.toukirahmed.cryptotracker.core.presentation.util.toString
 import com.toukirahmed.cryptotracker.core.presentation.util.ObserveAsEvents
+import com.toukirahmed.cryptotracker.crypto.presentation.coin_detail.CoinDetailScreen
 import com.toukirahmed.cryptotracker.crypto.presentation.coin_list.CoinListEvent
 import com.toukirahmed.cryptotracker.crypto.presentation.coin_list.CoinListScreen
 import com.toukirahmed.cryptotracker.crypto.presentation.coin_list.CoinListState
@@ -49,10 +50,21 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                    CoinListScreen(
-                        state = state,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    when {
+                        state.selectedCoin != null -> {
+                            CoinDetailScreen(
+                                state = state,
+                                modifier = Modifier.padding(innerPadding)
+                            )
+                        }
+                        else -> {
+                            CoinListScreen(
+                                state = state,
+                                modifier = Modifier.padding(innerPadding),
+                                onAction = viewModel::onAction
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -70,7 +82,8 @@ private fun CoinListScreenPreview() {
                 }
             ),
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
+                .background(MaterialTheme.colorScheme.background),
+            onAction = {}
         )
     }
 }
